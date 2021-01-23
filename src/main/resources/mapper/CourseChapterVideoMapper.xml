@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aiolos.news.dao.CourseChapterVideoMapper">
+  <resultMap id="BaseResultMap" type="com.aiolos.news.pojo.CourseChapterVideo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="status_id" jdbcType="TINYINT" property="statusId" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="course_id" jdbcType="BIGINT" property="courseId" />
+    <result column="chapter_id" jdbcType="BIGINT" property="chapterId" />
+    <result column="chapter_video_name" jdbcType="VARCHAR" property="chapterVideoName" />
+    <result column="chapter_video_desc" jdbcType="VARCHAR" property="chapterVideoDesc" />
+    <result column="is_video" jdbcType="TINYINT" property="isVideo" />
+    <result column="video_id" jdbcType="BIGINT" property="videoId" />
+    <result column="video_name" jdbcType="VARCHAR" property="videoName" />
+    <result column="video_length" jdbcType="VARCHAR" property="videoLength" />
+    <result column="video_vid" jdbcType="VARCHAR" property="videoVid" />
+    <result column="playback" jdbcType="VARCHAR" property="playback" />
+    <result column="live_vid" jdbcType="VARCHAR" property="liveVid" />
+  </resultMap>
+</mapper>
