@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aiolos.news.dao.CourseChapterVideoMapper">
-  <resultMap id="BaseResultMap" type="com.aiolos.news.pojo.CourseChapterVideo">
+<mapper namespace="com.aiolos.news.dao.CourseChapterVideoAuditMapper">
+  <resultMap id="BaseResultMap" type="com.aiolos.news.pojo.CourseChapterVideoAudit">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
@@ -17,6 +17,8 @@
     <result column="video_length" jdbcType="VARCHAR" property="videoLength" />
     <result column="video_vid" jdbcType="VARCHAR" property="videoVid" />
     <result column="playback" jdbcType="VARCHAR" property="playback" />
+    <result column="audit_status" jdbcType="INTEGER" property="auditStatus" />
+    <result column="audit_opinion" jdbcType="VARCHAR" property="auditOpinion" />
     <result column="live_vid" jdbcType="VARCHAR" property="liveVid" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -80,15 +82,15 @@
   <sql id="Base_Column_List">
     id, gmt_create, gmt_modified, status_id, sort, course_id, chapter_id, chapter_video_name, 
     chapter_video_desc, is_video, video_id, video_name, video_length, video_vid, playback, 
-    live_vid
+    audit_status, audit_opinion, live_vid
   </sql>
-  <select id="selectByExample" parameterType="com.aiolos.news.pojo.CourseChapterVideoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.aiolos.news.pojo.CourseChapterVideoAuditExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from course_chapter_video
+    from course_chapter_video_audit
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -99,41 +101,43 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from course_chapter_video
+    from course_chapter_video_audit
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from course_chapter_video
+    delete from course_chapter_video_audit
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.aiolos.news.pojo.CourseChapterVideoExample">
-    delete from course_chapter_video
+  <delete id="deleteByExample" parameterType="com.aiolos.news.pojo.CourseChapterVideoAuditExample">
+    delete from course_chapter_video_audit
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.aiolos.news.pojo.CourseChapterVideo">
+  <insert id="insert" parameterType="com.aiolos.news.pojo.CourseChapterVideoAudit">
     <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into course_chapter_video (id, gmt_create, gmt_modified, 
+    insert into course_chapter_video_audit (id, gmt_create, gmt_modified, 
       status_id, sort, course_id, 
       chapter_id, chapter_video_name, chapter_video_desc, 
       is_video, video_id, video_name, 
       video_length, video_vid, playback, 
-      live_vid)
+      audit_status, audit_opinion, live_vid
+      )
     values (#{id,jdbcType=BIGINT}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
       #{statusId,jdbcType=TINYINT}, #{sort,jdbcType=INTEGER}, #{courseId,jdbcType=BIGINT}, 
       #{chapterId,jdbcType=BIGINT}, #{chapterVideoName,jdbcType=VARCHAR}, #{chapterVideoDesc,jdbcType=VARCHAR}, 
       #{isVideo,jdbcType=TINYINT}, #{videoId,jdbcType=BIGINT}, #{videoName,jdbcType=VARCHAR}, 
       #{videoLength,jdbcType=VARCHAR}, #{videoVid,jdbcType=VARCHAR}, #{playback,jdbcType=VARCHAR}, 
-      #{liveVid,jdbcType=VARCHAR})
+      #{auditStatus,jdbcType=INTEGER}, #{auditOpinion,jdbcType=VARCHAR}, #{liveVid,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.aiolos.news.pojo.CourseChapterVideo">
+  <insert id="insertSelective" parameterType="com.aiolos.news.pojo.CourseChapterVideoAudit">
     <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into course_chapter_video
+    insert into course_chapter_video_audit
     <trim prefix="(" suffix=")" suffixOverrides=",">
       id,
       <if test="gmtCreate != null">
@@ -177,6 +181,12 @@
       </if>
       <if test="playback != null">
         playback,
+      </if>
+      <if test="auditStatus != null">
+        audit_status,
+      </if>
+      <if test="auditOpinion != null">
+        audit_opinion,
       </if>
       <if test="liveVid != null">
         live_vid,
@@ -226,19 +236,25 @@
       <if test="playback != null">
         #{playback,jdbcType=VARCHAR},
       </if>
+      <if test="auditStatus != null">
+        #{auditStatus,jdbcType=INTEGER},
+      </if>
+      <if test="auditOpinion != null">
+        #{auditOpinion,jdbcType=VARCHAR},
+      </if>
       <if test="liveVid != null">
         #{liveVid,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.aiolos.news.pojo.CourseChapterVideoExample" resultType="java.lang.Long">
-    select count(*) from course_chapter_video
+  <select id="countByExample" parameterType="com.aiolos.news.pojo.CourseChapterVideoAuditExample" resultType="java.lang.Long">
+    select count(*) from course_chapter_video_audit
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update course_chapter_video
+    update course_chapter_video_audit
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
@@ -285,6 +301,12 @@
       <if test="record.playback != null">
         playback = #{record.playback,jdbcType=VARCHAR},
       </if>
+      <if test="record.auditStatus != null">
+        audit_status = #{record.auditStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.auditOpinion != null">
+        audit_opinion = #{record.auditOpinion,jdbcType=VARCHAR},
+      </if>
       <if test="record.liveVid != null">
         live_vid = #{record.liveVid,jdbcType=VARCHAR},
       </if>
@@ -294,7 +316,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update course_chapter_video
+    update course_chapter_video_audit
     set id = #{record.id,jdbcType=BIGINT},
       gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
@@ -310,13 +332,15 @@
       video_length = #{record.videoLength,jdbcType=VARCHAR},
       video_vid = #{record.videoVid,jdbcType=VARCHAR},
       playback = #{record.playback,jdbcType=VARCHAR},
+      audit_status = #{record.auditStatus,jdbcType=INTEGER},
+      audit_opinion = #{record.auditOpinion,jdbcType=VARCHAR},
       live_vid = #{record.liveVid,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aiolos.news.pojo.CourseChapterVideo">
-    update course_chapter_video
+  <update id="updateByPrimaryKeySelective" parameterType="com.aiolos.news.pojo.CourseChapterVideoAudit">
+    update course_chapter_video_audit
     <set>
       <if test="gmtCreate != null">
         gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
@@ -360,14 +384,20 @@
       <if test="playback != null">
         playback = #{playback,jdbcType=VARCHAR},
       </if>
+      <if test="auditStatus != null">
+        audit_status = #{auditStatus,jdbcType=INTEGER},
+      </if>
+      <if test="auditOpinion != null">
+        audit_opinion = #{auditOpinion,jdbcType=VARCHAR},
+      </if>
       <if test="liveVid != null">
         live_vid = #{liveVid,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aiolos.news.pojo.CourseChapterVideo">
-    update course_chapter_video
+  <update id="updateByPrimaryKey" parameterType="com.aiolos.news.pojo.CourseChapterVideoAudit">
+    update course_chapter_video_audit
     set gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
       status_id = #{statusId,jdbcType=TINYINT},
@@ -382,6 +412,8 @@
       video_length = #{videoLength,jdbcType=VARCHAR},
       video_vid = #{videoVid,jdbcType=VARCHAR},
       playback = #{playback,jdbcType=VARCHAR},
+      audit_status = #{auditStatus,jdbcType=INTEGER},
+      audit_opinion = #{auditOpinion,jdbcType=VARCHAR},
       live_vid = #{liveVid,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>

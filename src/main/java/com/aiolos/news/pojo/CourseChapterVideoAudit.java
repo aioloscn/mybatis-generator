@@ -3,7 +3,7 @@ package com.aiolos.news.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
-public class CourseChapterVideo implements Serializable {
+public class CourseChapterVideoAudit implements Serializable {
     /**
      * 主键
      */
@@ -80,12 +80,22 @@ public class CourseChapterVideo implements Serializable {
     private String playback;
 
     /**
+     * 审核状态(0:待审核;1:审核通过;2:审核不通过)
+     */
+    private Integer auditStatus;
+
+    /**
+     * 审核意见
+     */
+    private String auditOpinion;
+
+    /**
      * 直播结束返回的vid
      */
     private String liveVid;
 
     /**
-     * course_chapter_video
+     * course_chapter_video_audit
      */
     private static final long serialVersionUID = 1L;
 
@@ -330,6 +340,38 @@ public class CourseChapterVideo implements Serializable {
     }
 
     /**
+     * 审核状态(0:待审核;1:审核通过;2:审核不通过)
+     * @return audit_status 审核状态(0:待审核;1:审核通过;2:审核不通过)
+     */
+    public Integer getAuditStatus() {
+        return auditStatus;
+    }
+
+    /**
+     * 审核状态(0:待审核;1:审核通过;2:审核不通过)
+     * @param auditStatus 审核状态(0:待审核;1:审核通过;2:审核不通过)
+     */
+    public void setAuditStatus(Integer auditStatus) {
+        this.auditStatus = auditStatus;
+    }
+
+    /**
+     * 审核意见
+     * @return audit_opinion 审核意见
+     */
+    public String getAuditOpinion() {
+        return auditOpinion;
+    }
+
+    /**
+     * 审核意见
+     * @param auditOpinion 审核意见
+     */
+    public void setAuditOpinion(String auditOpinion) {
+        this.auditOpinion = auditOpinion == null ? null : auditOpinion.trim();
+    }
+
+    /**
      * 直播结束返回的vid
      * @return live_vid 直播结束返回的vid
      */
@@ -366,6 +408,8 @@ public class CourseChapterVideo implements Serializable {
         sb.append(", videoLength=").append(videoLength);
         sb.append(", videoVid=").append(videoVid);
         sb.append(", playback=").append(playback);
+        sb.append(", auditStatus=").append(auditStatus);
+        sb.append(", auditOpinion=").append(auditOpinion);
         sb.append(", liveVid=").append(liveVid);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
