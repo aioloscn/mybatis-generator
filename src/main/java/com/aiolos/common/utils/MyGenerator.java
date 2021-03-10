@@ -1,4 +1,4 @@
-package com.aiolos.news.utils;
+package com.aiolos.common.utils;
 
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;

@@ -1,4 +1,4 @@
-package com.aiolos.news.utils;
+package com.aiolos.common.utils;
 
 import org.mybatis.generator.codegen.mybatis3.IntrospectedTableMyBatis3SimpleImpl;
 

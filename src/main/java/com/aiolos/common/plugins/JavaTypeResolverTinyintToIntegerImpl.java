@@ -1,4 +1,4 @@
-package com.aiolos.news.mybatis.plugins;
+package com.aiolos.common.plugins;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.JavaTypeResolver;

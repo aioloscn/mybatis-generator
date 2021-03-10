@@ -13,7 +13,7 @@
     <!-- 自定义的MyBatis3Simple类将默认的mapper后缀改成dao -->
     <!-- MyBatis3: 默认值，生成基于MyBatis3.x版本以上的内容，包括xxxBySample，<table>中去掉enableExample=false -->
     <!-- MyBatis3Simple: 类似MyBatis3，只是不生成xxxBySample -->
-    <context id="DB2Tables" targetRuntime="com.aiolos.news.utils.MyBatis3Simple" defaultModelType="flat">
+    <context id="DB2Tables" targetRuntime="com.aiolos.common.utils.MyBatis3Simple" defaultModelType="flat">
         <!-- 生成的 Java 文件的编码 -->
         <property name="javaFileEncoding" value="UTF-8"/>
         <!-- 格式化 Java 代码 -->
@@ -29,13 +29,13 @@
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
 
         <!-- 通用mapper所在目录 -->
-        <!--<plugin type="tk.mybatis.mapper.generator.MapperPlugin">    去tk包这里先注释掉
-            &lt;!&ndash; 这里一定要是mappers，不然会提示缺少必要的mappers属性 &ndash;&gt;
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <!-- 这里一定要是mappers，不然会提示缺少必要的mappers属性 -->
             <property name="mappers" value="com.baomidou.mybatisplus.core.mapper.BaseMapper"/>
-        </plugin>-->
+        </plugin>
 
         <!-- 自定义注释生成器 -->
-        <commentGenerator type="com.aiolos.news.utils.MyCommentGenerator">
+        <commentGenerator type="com.aiolos.common.utils.MyCommentGenerator">
             <property name="author" value="aiolos"/>
             <property name="dateFormat" value="yyyy/MM/dd"/>
             <property name="suppressAllComments" value="false"/>
@@ -47,7 +47,7 @@
                         password="${password}">
         </jdbcConnection>
 
-        <javaTypeResolver type="com.aiolos.news.mybatis.plugins.JavaTypeResolverTinyintToIntegerImpl">
+        <javaTypeResolver type="com.aiolos.common.plugins.JavaTypeResolverTinyintToIntegerImpl">
         </javaTypeResolver>
 
         <!-- 对应生成的pojo所在包 -->

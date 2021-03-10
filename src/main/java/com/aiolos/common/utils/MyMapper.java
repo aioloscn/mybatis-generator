@@ -1,4 +1,4 @@
-package com.aiolos.news.utils;
+package com.aiolos.common.utils;
 
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;
