@@ -13,7 +13,7 @@
     <!-- 自定义的MyBatis3Simple类将默认的mapper后缀改成dao -->
     <!-- MyBatis3: 默认值，生成基于MyBatis3.x版本以上的内容，包括xxxBySample，<table>中去掉enableExample=false -->
     <!-- MyBatis3Simple: 类似MyBatis3，只是不生成xxxBySample -->
-    <context id="DB2Tables" targetRuntime="MyBatis3" defaultModelType="flat">
+    <context id="DB2Tables" targetRuntime="com.aiolos.news.utils.MyBatis3Simple" defaultModelType="flat">
         <!-- 生成的 Java 文件的编码 -->
         <property name="javaFileEncoding" value="UTF-8"/>
         <!-- 格式化 Java 代码 -->
@@ -29,10 +29,10 @@
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
 
         <!-- 通用mapper所在目录 -->
-<!--        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">-->
-<!--            &lt;!&ndash; 这里一定要是mappers，不然会提示缺少必要的mappers属性 &ndash;&gt;-->
-<!--            <property name="mappers" value="com.baomidou.mybatisplus.core.mapper.BaseMapper"/>-->
-<!--        </plugin>-->
+        <!--<plugin type="tk.mybatis.mapper.generator.MapperPlugin">    去tk包这里先注释掉
+            &lt;!&ndash; 这里一定要是mappers，不然会提示缺少必要的mappers属性 &ndash;&gt;
+            <property name="mappers" value="com.baomidou.mybatisplus.core.mapper.BaseMapper"/>
+        </plugin>-->
 
         <!-- 自定义注释生成器 -->
         <commentGenerator type="com.aiolos.news.utils.MyCommentGenerator">
@@ -51,7 +51,7 @@
         </javaTypeResolver>
 
         <!-- 对应生成的pojo所在包 -->
-        <javaModelGenerator targetPackage="com.aiolos.news.pojo" targetProject="/Users/Aiolos/developer/gitProjects/mybatis-generator-database/src/main/java">
+        <javaModelGenerator targetPackage="${pojoTargetPackage}" targetProject="/Users/Aiolos/developer/gitProjects/mybatis-generator-database/src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -62,12 +62,12 @@
         </sqlMapGenerator>
 
         <!-- 配置mapper对应的java映射 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.aiolos.news.dao" targetProject="/Users/Aiolos/developer/gitProjects/mybatis-generator-database/src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${daoTargetPackage}" targetProject="/Users/Aiolos/developer/gitProjects/mybatis-generator-database/src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!-- 数据库表 -->
-        <!--<table tableName="sys_config" domainObjectName="SysConfig" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="sys_config" domainObjectName="SysConfig" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="Mysql" />
         </table>
         <table tableName="tb_action" domainObjectName="TbAction" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
@@ -105,22 +105,7 @@
         </table>
         <table tableName="tb_workday" domainObjectName="TbWorkday" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="Mysql" />
-        </table>-->
+        </table>
 
-        <table tableName="course_chapter" domainObjectName="CourseChapter" >
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="course_chapter_audit" domainObjectName="CourseChapterAudit" >
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="course_chapter_video" domainObjectName="CourseChapterVideo" >
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="course_chapter_video_audit" domainObjectName="CourseChapterVideoAudit" >
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="course_user_study" domainObjectName="CourseUserStudy" >
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
     </context>
 </generatorConfiguration>
