@@ -51,59 +51,50 @@
         </javaTypeResolver>
 
         <!-- 对应生成的pojo所在包 -->
-        <javaModelGenerator targetPackage="${pojoTargetPackage}" targetProject="/Users/Aiolos/developer/gitProjects/mybatis-generator-database/src/main/java">
+        <javaModelGenerator targetPackage="${pojoTargetPackage}" targetProject="${pojoTargetProject}">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <!-- 对应生成的mapper所在目录 -->
-        <sqlMapGenerator targetPackage="mapper" targetProject="/Users/Aiolos/developer/gitProjects/mybatis-generator-database/src/main/resources">
+        <sqlMapGenerator targetPackage="mapper" targetProject="${mapperTargetProject}">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- 配置mapper对应的java映射 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="${daoTargetPackage}" targetProject="/Users/Aiolos/developer/gitProjects/mybatis-generator-database/src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${daoTargetPackage}" targetProject="${daoTargetProject}">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!-- 数据库表 -->
+        <table tableName="action" domainObjectName="Action" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="Mysql" />
+        </table>
+        <table tableName="book" domainObjectName="Book" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="Mysql" />
+        </table>
+        <table tableName="module" domainObjectName="Module" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="Mysql" />
+        </table>
+        <table tableName="order_form" domainObjectName="OrderForm" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="Mysql" />
+        </table>
+        <table tableName="permission" domainObjectName="Permission" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="Mysql" />
+        </table>
+        <table tableName="role" domainObjectName="Role" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="Mysql" />
+        </table>
+        <table tableName="shopping_cart" domainObjectName="ShoppingCart" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="Mysql" />
+        </table>
         <table tableName="sys_config" domainObjectName="SysConfig" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="Mysql" />
         </table>
-        <table tableName="tb_action" domainObjectName="TbAction" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="user" domainObjectName="User" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="Mysql" />
         </table>
-        <table tableName="tb_checkin" domainObjectName="TbCheckin" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="tb_city" domainObjectName="TbCity" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="tb_dept" domainObjectName="TbDept" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="tb_face_model" domainObjectName="TbFaceModel" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="tb_holidays" domainObjectName="TbHolidays" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="tb_meeting" domainObjectName="TbMeeting" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="tb_module" domainObjectName="TbModule" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="tb_permission" domainObjectName="TbiPermission" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="tb_role" domainObjectName="TbRole" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="tb_user" domainObjectName="TbUser" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="tb_workday" domainObjectName="TbWorkday" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="admin_operate_record" domainObjectName="AdminOperateRecord" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="Mysql" />
         </table>
 
