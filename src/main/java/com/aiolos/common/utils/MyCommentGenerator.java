@@ -28,7 +28,7 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
      */
     private Properties systemPro;
 
-    /*
+    /**
      * 父类时间
      */
     private boolean suppressDate;

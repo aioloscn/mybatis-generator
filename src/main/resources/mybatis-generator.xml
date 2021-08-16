@@ -29,7 +29,7 @@
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
 
         <!-- 通用mapper所在目录 -->
-        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+        <plugin type="com.aiolos.common.utils.MyMapperPlugin">
             <!-- 这里一定要是mappers，不然会提示缺少必要的mappers属性 -->
             <property name="mappers" value="com.baomidou.mybatisplus.core.mapper.BaseMapper"/>
         </plugin>
@@ -67,34 +67,7 @@
         </javaClientGenerator>
 
         <!-- 数据库表 -->
-        <table tableName="action" domainObjectName="Action" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="book" domainObjectName="Book" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="module" domainObjectName="Module" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="order_form" domainObjectName="OrderForm" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="permission" domainObjectName="Permission" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="role" domainObjectName="Role" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="shopping_cart" domainObjectName="ShoppingCart" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="sys_config" domainObjectName="SysConfig" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="user" domainObjectName="User" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <generatedKey column="id" sqlStatement="Mysql" />
-        </table>
-        <table tableName="admin_operate_record" domainObjectName="AdminOperateRecord" mapperName="{0}Dao" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="t_diners" domainObjectName="Diners" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="Mysql" />
         </table>
 
